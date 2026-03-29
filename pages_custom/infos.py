@@ -91,7 +91,7 @@ def render():
     # Section 2 — Features acoustiques
     # ─────────────────────────────────────────────────────────────────────────
     st.markdown(
-        "<div class='section-title'>Features acoustiques extraites</div>",
+        "<div class='section-title'>Les fonctionalités acoustiques</div>",
         unsafe_allow_html=True,
     )
 
@@ -113,7 +113,6 @@ def render():
           <div class="feat-hdr">
             <div class="feat-ico" style="color:{color};">{_ico(ico_name, color)}</div>
             <span class="feat-name">{name}</span>
-            <span class="feat-badge">{badge}</span>
           </div>
           <div class="feat-desc">{desc}</div>
         </div>"""
@@ -126,13 +125,9 @@ def render():
 .feat-hdr{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
 .feat-ico{display:flex;flex-shrink:0;}
 .feat-name{font-family:'Space Grotesk',sans-serif;font-size:0.9rem;font-weight:700;color:#4dc8ff;flex-grow:1;}
-.feat-badge{font-size:0.65rem;font-weight:700;color:#fff;background:rgba(0,100,200,0.4);border:1px solid rgba(0,150,255,0.3);border-radius:20px;padding:2px 9px;white-space:nowrap;}
 .feat-desc{font-size:0.8rem;color:#6699bb;line-height:1.5;}
 </style>
-<div class="feat-grid">""" + feat_cards + """</div>
-<div style="text-align:center;font-size:0.78rem;color:#3a6a88;font-style:italic;margin:12px 0 30px;">
-  Total : <strong style="color:#4dc8ff">182 features</strong> par fenêtre de 2 secondes
-</div>"""
+<div class="feat-grid">""" + feat_cards + "</div>"""
 
     st.markdown(features_html, unsafe_allow_html=True)
 

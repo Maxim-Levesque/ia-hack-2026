@@ -300,13 +300,13 @@ def train():
     print(f"  Distribution labels : {dict(Counter(y_test))}")
 
     # ── Normalisation ─────────────────────────────────────────────
-    print("\n⚖️  Normalisation StandardScaler...")
+    print("\nNormalisation StandardScaler...")
     scaler = StandardScaler()
     X_train_scaled = scaler.fit_transform(X_train)
     X_test_scaled = scaler.transform(X_test)
 
     # ── Entraînement Random Forest ────────────────────────────────
-    print("\n🌳 Entraînement du Random Forest (n=200 arbres)...")
+    print("\nEntrainement du Random Forest (n=200 arbres)...")
     clf = RandomForestClassifier(
         n_estimators=200,
         max_depth=None,
@@ -320,10 +320,10 @@ def train():
     clf.fit(X_train_scaled, y_train)
 
     # ── Évaluation ────────────────────────────────────────────────
-    print("\n📈 Évaluation sur le jeu de TEST...")
+    print("\nEvaluation sur le jeu de TEST...")
     y_pred = clf.predict(X_test_scaled)
     accuracy = accuracy_score(y_test, y_pred)
-    print(f"\n  ✅ Accuracy : {accuracy:.2%}")
+    print(f"\n  Accuracy : {accuracy:.2%}")
     print("\n  Rapport de classification :")
     print(
         classification_report(

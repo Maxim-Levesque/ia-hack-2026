@@ -41,7 +41,7 @@ def render():
             <div style="font-size:0.8rem; color:#a0cce0; font-weight:400; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 25px; opacity: 0.7;">Équipe de développement</div>
             <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding: 0 20px;">
                 <div style="text-align: center;">
-                    <div style="font-size: 1rem; color: #fff; font-weight: 700;">Justin Chamberlant</div>
+                    <div style="font-size: 1rem; color: #fff; font-weight: 700;">Justin Chamberland</div>
                     <div style="font-size: 0.75rem; color: #4dc8ff; font-weight: 500; margin-top: 4px; opacity: 0.8;">ML & Data</div>
                 </div>
                 <div style="text-align: center;">

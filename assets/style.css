@@ -6,7 +6,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 /* ─── Reset & base ─────────────────────────────────────────── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -40,8 +42,15 @@ header {
 }
 
 @keyframes fadeInMain {
-    from { opacity: 0; transform: translateY(5px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ─── Sidebar ──────────────────────────────────────────────── */
@@ -96,7 +105,8 @@ section[data-testid="stSidebar"]>div:nth-child(2) {
     text-align: center;
     border-bottom: 1px solid rgba(0, 150, 255, 0.08);
     margin-bottom: 25px;
-    background: transparent; /* Removed gradient to avoid "square" look */
+    background: transparent;
+    /* Removed gradient to avoid "square" look */
 }
 
 .brand-title {
@@ -693,7 +703,8 @@ label {
     background: rgba(0, 150, 255, 0.08) !important;
     color: #ffffff !important;
     border-color: rgba(0, 150, 255, 0.15) !important;
-    padding-left: 24px !important; /* Subtle slide effect */
+    padding-left: 24px !important;
+    /* Subtle slide effect */
 }
 
 [data-testid="stSidebar"] .stButton>button[kind="primary"] {
@@ -761,15 +772,68 @@ label {
         background-color: transparent !important;
         color: rgb(224, 244, 255) !important;
     }
-    
+
     /* Force sidebar to overlay "par dessus la page" like mobile */
     section[data-testid="stSidebar"] {
         position: fixed !important;
         height: 100vh !important;
         z-index: 999998 !important;
-        box-shadow: 5px 0 15px rgba(0,0,0,0.5) !important;
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5) !important;
     }
 }
 
 /* ─── Centered Loading Overlay ────────────────────────────── */
 
+.cm-cell-error {
+    background: rgba(255, 50, 50, 0.1);
+    color: #ff4d4d;
+    font-weight: 700;
+}
+
+/* ─── Architecture Schema (Home) ─────────────────────────── */
+.schema-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.schema-card {
+    width: 180px;
+    text-align: center;
+    padding: 20px 15px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.schema-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.schema-arrow {
+    color: #00d2ff;
+    font-size: 1.2rem;
+    opacity: 0.4;
+}
+
+@media (max-width: 900px) {
+    .schema-arrow {
+        display: none;
+    }
+
+    .schema-card {
+        width: calc(50% - 20px);
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .schema-card {
+        width: 100%;
+    }
+}
