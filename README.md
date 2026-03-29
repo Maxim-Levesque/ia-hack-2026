@@ -7,7 +7,17 @@ Application Streamlit de classification automatique des vocalisations de mammif�
 
 ---
 
-## Aperçu
+## ⚡ Déploiement rapide (Ubuntu / Proxmox)
+
+```bash
+curl -sSL https://raw.githubusercontent.com/Maxim-Levesque/ia-hack-2026/main/deploy.sh | sudo bash
+```
+
+Cette commande installe tout automatiquement et lance l'app comme service système.  
+L'application sera accessible sur `http://VOTRE_IP:8501`.
+
+---
+
 
 L'application permet de :
 - **Analyser** un fichier audio (WAV / MP3 / FLAC) et identifier les espèces de mammifères marins présentes
