@@ -1,0 +1,775 @@
+/* ═══════════════════════════════════════════════════════════
+   IA Hack 2026 — Global Stylesheet
+   Blue ocean theme, glassmorphism design
+   ═══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* ─── Reset & base ─────────────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html,
+body,
+[class*="css"] {
+    font-family: 'Inter', sans-serif;
+}
+
+/* App background */
+.stApp {
+    background: linear-gradient(135deg, #020b18 0%, #041529 40%, #062040 100%);
+    min-height: 100vh;
+}
+
+/* ─── Hide default Streamlit chrome ───────────────────────── */
+#MainMenu,
+footer {
+    display: none;
+}
+
+header {
+    background: transparent !important;
+}
+
+.block-container {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    max-width: 1400px;
+    animation: fadeInMain 0.6s ease-out;
+}
+
+@keyframes fadeInMain {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Sidebar ──────────────────────────────────────────────── */
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #010813 0%, #021122 100%) !important;
+    border-right: 1px solid rgba(0, 150, 255, 0.12);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Disable manual sidebar resizing and sidebar collapse toggle */
+[data-testid="collapsedControl"],
+[data-testid="stSidebarResizer"],
+[data-testid="stSidebarResizeHandle"],
+[data-testid="stSidebarCollapseButton"],
+button[title="Collapse sidebar"],
+button[title="Close sidebar"],
+section[data-testid="stSidebar"]>div:nth-child(2) {
+    display: none !important;
+    pointer-events: none !important;
+    background-color: transparent !important;
+    cursor: default !important;
+    color: transparent !important;
+}
+
+[data-testid="stSidebar"] {
+    min-width: 320px !important;
+    max-width: 320px !important;
+}
+
+[data-testid="stSidebar"]>div:first-child {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+[data-testid="stSidebarContent"] {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Push the footer to the bottom */
+[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-brand-container {
+    padding: 40px 24px 30px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 150, 255, 0.08);
+    margin-bottom: 25px;
+    background: transparent; /* Removed gradient to avoid "square" look */
+}
+
+.brand-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.03em;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #fff, #a0d8f0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.brand-sub {
+    font-size: 0.7rem;
+    color: #4dc8ff;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 6px;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.sidebar-divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 20px 20px 10px;
+}
+
+.sidebar-footer-title {
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.04em;
+    opacity: 0.9;
+}
+
+.sidebar-footer-discreet {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #4dc8ff;
+    padding: 8px 10px 30px 10px;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+/* Radio buttons in sidebar */
+[data-testid="stSidebar"] .stRadio label {
+    color: #7ec8f5 !important;
+    font-size: 0.92rem;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+[data-testid="stSidebar"] .stRadio label:hover {
+    background: rgba(0, 150, 255, 0.12) !important;
+    color: #e0f4ff !important;
+}
+
+/* ─── Glass card component ────────────────────────────────── */
+.glass-card {
+    background: rgba(5, 25, 55, 0.6);
+    border: 1px solid rgba(0, 150, 255, 0.18);
+    border-radius: 20px;
+    padding: 28px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px rgba(0, 50, 120, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 48px rgba(0, 80, 200, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Page header ─────────────────────────────────────────── */
+.page-header {
+    text-align: center;
+    padding: 30px 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.main-title {
+    font-size: 3.5rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.04em !important;
+    background: linear-gradient(135deg, #ffffff 0%, #a0e4ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.1 !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+}
+
+.page-header .subtitle {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(77, 200, 255, 0.08);
+    border: 1px solid rgba(77, 200, 255, 0.25);
+    border-radius: 50px;
+    padding: 8px 24px;
+    color: #a0d8f0;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 50, 120, 0.15);
+}
+
+.page-header .subtitle .dot {
+    color: #4dc8ff;
+    font-size: 1.2rem;
+    line-height: 0;
+}
+
+/* ─── Section title ───────────────────────────────────────── */
+.section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #a0d8f0;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(0, 150, 255, 0.18);
+}
+
+/* ─── Stat chips ──────────────────────────────────────────── */
+.stat-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    justify-content: center;
+}
+
+.stat-chip {
+    background: linear-gradient(135deg, rgba(0, 120, 255, 0.20), rgba(0, 200, 255, 0.10));
+    border: 1px solid rgba(0, 180, 255, 0.25);
+    border-radius: 50px;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat-chip .chip-icon {
+    font-size: 1.4rem;
+}
+
+.stat-chip .chip-label {
+    font-size: 0.78rem;
+    color: #5599cc;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.stat-chip .chip-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #e0f4ff;
+}
+
+/* ─── Species card ────────────────────────────────────────── */
+.species-card {
+    background: linear-gradient(160deg, rgba(5, 25, 60, 0.85), rgba(2, 15, 40, 0.9));
+    border: 1px solid rgba(0, 150, 255, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: default;
+}
+
+.species-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: brightness(0.85) saturate(1.2);
+}
+
+.species-card .card-body {
+    padding: 20px;
+}
+
+.species-card .card-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #c8e8ff;
+    margin-bottom: 4px;
+}
+
+.species-card .card-latin {
+    font-size: 0.75rem;
+    color: #3a7aaa;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+.species-card .card-freq {
+    display: inline-block;
+    background: rgba(0, 150, 255, 0.18);
+    border: 1px solid rgba(0, 180, 255, 0.25);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 0.78rem;
+    color: #7eccf5;
+    margin-bottom: 10px;
+}
+
+.species-card .card-desc {
+    font-size: 0.84rem;
+    color: #6699bb;
+    line-height: 1.55;
+}
+
+/* ─── Generic Card Typography ──────────────────────────────── */
+.card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #c8e8ff;
+    margin-bottom: 8px;
+}
+
+.card-subtitle {
+    font-size: 0.75rem;
+    color: #5599cc;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.card-desc {
+    font-size: 0.84rem;
+    color: #6699bb;
+    line-height: 1.55;
+}
+
+/* ─── Sound player embed ──────────────────────────────────── */
+.sound-demo-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 14px;
+}
+
+.sound-label {
+    font-size: 0.78rem;
+    color: #4488aa;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+}
+
+/* ─── Upload zone ─────────────────────────────────────────── */
+[data-testid="stFileUploader"] {
+    max-width: 800px;
+    margin: 10px auto 10px auto;
+}
+
+[data-testid="stFileUploaderDropzone"] {
+    background: rgba(5, 25, 55, 0.6) !important;
+    border: 1.5px dashed rgba(77, 200, 255, 0.5) !important;
+    border-radius: 16px !important;
+    padding-bottom: 10px !important;
+    margin-top: -10px !important;
+    transition: all 0.2s ease !important;
+    backdrop-filter: blur(16px);
+}
+
+[data-testid="stFileUploaderDropzone"]:hover {
+    background: rgba(0, 30, 70, 0.8) !important;
+    border-color: rgba(77, 200, 255, 0.9) !important;
+    box-shadow: 0 0 20px rgba(77, 200, 255, 0.15) !important;
+}
+
+/* Style instructions */
+[data-testid="stFileUploaderDropzoneInstructions"] {
+    color: #e0f4ff !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+}
+
+[data-testid="stFileUploaderDropzoneInstructions"] small {
+    color: #8ab8d8 !important;
+}
+
+[data-testid="stFileUploaderDropzoneInstructions"] span {
+    color: #4dc8ff !important;
+}
+
+/* Style the browse button specifically to avoid breaking "remove" buttons */
+[data-testid="stFileUploaderDropzone"] button {
+    background: linear-gradient(135deg, rgba(0, 120, 255, 0.20), rgba(0, 200, 255, 0.10)) !important;
+    border: 1px solid rgba(0, 180, 255, 0.25) !important;
+    color: #4dc8ff !important;
+    border-radius: 50px !important;
+    padding: 8px 32px !important;
+    font-weight: 600 !important;
+}
+
+[data-testid="stFileUploaderDropzone"] button:hover {
+    background: rgba(77, 200, 255, 0.15) !important;
+    border-color: #4dc8ff !important;
+    color: #ffffff !important;
+}
+
+/* Style the uploaded file list container */
+[data-testid="stFileUploader"]>section {
+    background: rgba(5, 25, 55, 0.4) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(0, 150, 255, 0.18) !important;
+    padding: 8px 16px !important;
+    margin-top: 10px !important;
+}
+
+[data-testid="stUploadedFile"] {
+    background: transparent !important;
+}
+
+[data-testid="stUploadedFile"] div {
+    color: #c8e8ff !important;
+}
+
+[data-testid="stUploadedFile"] svg {
+    fill: #a0d8f0 !important;
+    color: #a0d8f0 !important;
+}
+
+/* Ensure the delete button is visible and clean */
+[data-testid="stUploadedFile"] button {
+    background: rgba(255, 0, 50, 0.1) !important;
+    border-radius: 50% !important;
+    padding: 4px !important;
+}
+
+[data-testid="stUploadedFile"] button:hover {
+    background: rgba(255, 0, 50, 0.3) !important;
+}
+
+/* Hide Streamlit label entirely */
+[data-testid="stFileUploader"] label {
+    display: none !important;
+}
+
+
+
+/* ─── Progress bars (prediction) ─────────────────────────── */
+.pred-bar-wrap {
+    margin-bottom: 14px;
+}
+
+.pred-bar-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.pred-bar-name {
+    font-size: 0.88rem;
+    color: #a0cce0;
+    font-weight: 500;
+}
+
+.pred-bar-pct {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #4dc8ff;
+}
+
+.pred-bar-track {
+    height: 10px;
+    background: rgba(0, 50, 100, 0.4);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.pred-bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, #0066ff, #00ccff);
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── Timeline strip ──────────────────────────────────────── */
+.timeline-wrap {
+    background: rgba(0, 20, 50, 0.5);
+    border: 1px solid rgba(0, 150, 255, 0.15);
+    border-radius: 14px;
+    padding: 14px 20px;
+}
+
+.timeline-header {
+    font-size: 0.78rem;
+    color: #4477aa;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+}
+
+.timeline-segments {
+    display: flex;
+    height: 36px;
+    gap: 3px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.seg {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    border-radius: 4px;
+    transition: opacity 0.2s;
+}
+
+.seg:hover {
+    opacity: 0.85;
+}
+
+.seg-beluga {
+    background: linear-gradient(135deg, #0066cc, #00aaff);
+}
+
+.seg-rorqual_commun {
+    background: linear-gradient(135deg, #004499, #0077dd);
+}
+
+.seg-rorqual_a_bosse {
+    background: linear-gradient(135deg, #003377, #0088cc);
+}
+
+.seg-cachalot {
+    background: linear-gradient(135deg, #0055aa, #4d94ff);
+}
+
+.seg-dauphin_flancs_blancs {
+    background: linear-gradient(135deg, #0088cc, #00bfff);
+}
+
+.seg-noise {
+    background: linear-gradient(135deg, #1a2a3a, #2a3a4a);
+}
+
+/* ─── Metric blocks ───────────────────────────────────────── */
+[data-testid="stMetric"] {
+    background: rgba(0, 30, 70, 0.45) !important;
+    border: 1px solid rgba(0, 150, 255, 0.18) !important;
+    border-radius: 16px !important;
+    padding: 16px 20px !important;
+}
+
+[data-testid="stMetricLabel"] {
+    color: #5599cc !important;
+    font-size: 0.8rem !important;
+}
+
+[data-testid="stMetricValue"] {
+    color: #a0e4ff !important;
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+}
+
+/* ─── Tabs ─────────────────────────────────────────────────── */
+[data-testid="stTabs"] [role="tablist"] {
+    background: rgba(0, 20, 50, 0.4);
+    border-radius: 12px;
+    padding: 4px;
+    gap: 4px;
+    border: 1px solid rgba(0, 150, 255, 0.12);
+}
+
+[data-testid="stTabs"] [role="tab"] {
+    border-radius: 8px !important;
+    color: #5599cc !important;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+[data-testid="stTabs"] [role="tab"][aria-selected="true"] {
+    background: linear-gradient(135deg, #0055cc, #0088ff) !important;
+    color: #fff !important;
+}
+
+/* ─── Generic text colors ─────────────────────────────────── */
+h1,
+h2,
+h3,
+h4 {
+    color: #c8e8ff !important;
+}
+
+p,
+li {
+    color: #8ab8d8;
+}
+
+label {
+    color: #7ec8f5 !important;
+}
+
+/* ─── Plotly chart container ──────────────────────────────── */
+.js-plotly-plot {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+/* ─── Info / warning boxes ────────────────────────────────── */
+[data-testid="stInfo"] {
+    background: rgba(0, 80, 180, 0.18) !important;
+    border: 1px solid rgba(0, 150, 255, 0.3) !important;
+    border-radius: 12px !important;
+    color: #7ec8f5 !important;
+}
+
+/* ─── Buttons ─────────────────────────────────────────────── */
+.stButton>button {
+    color: #ffffff !important;
+    border: 1px solid rgba(0, 150, 255, 0.3) !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    padding: 10px 28px !important;
+    transition: all 0.25s ease !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+
+/* Secondary Buttons (General Use) */
+.stButton>button[kind="secondary"] {
+    background: rgba(0, 30, 70, 0.4) !important;
+    box-shadow: none !important;
+}
+
+.stButton>button[kind="secondary"]:hover {
+    background: rgba(0, 80, 180, 0.3) !important;
+    transform: translateY(-2px) !important;
+    border-color: rgba(0, 200, 255, 0.5) !important;
+}
+
+/* Primary Buttons (Call to actions) */
+.stButton>button[kind="primary"] {
+    background: linear-gradient(135deg, #0055cc, #0088ff) !important;
+    border: none !important;
+}
+
+.stButton>button[kind="primary"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 30px rgba(0, 150, 255, 0.5) !important;
+}
+
+/* ─── Sidebar Custom Navigation UI ───────────────────────── */
+[data-testid="stSidebar"] .stButton>button {
+    width: 100% !important;
+    border-radius: 12px !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+    padding: 12px 20px !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 0.03em !important;
+    text-transform: none !important;
+    box-shadow: none !important;
+    margin-bottom: 8px !important;
+    transition: all 0.25s ease !important;
+    border: 1px solid transparent !important;
+}
+
+[data-testid="stSidebar"] .stButton>button[kind="secondary"] {
+    background: transparent !important;
+    color: #a0cce0 !important;
+    font-weight: 500 !important;
+}
+
+[data-testid="stSidebar"] .stButton>button[kind="secondary"]:hover {
+    background: rgba(0, 150, 255, 0.08) !important;
+    color: #ffffff !important;
+    border-color: rgba(0, 150, 255, 0.15) !important;
+    padding-left: 24px !important; /* Subtle slide effect */
+}
+
+[data-testid="stSidebar"] .stButton>button[kind="primary"] {
+    background: linear-gradient(90deg, rgba(0, 110, 255, 0.25), rgba(77, 200, 255, 0.12)) !important;
+    border: 1px solid rgba(0, 150, 255, 0.25) !important;
+    color: #e0f4ff !important;
+    font-weight: 700 !important;
+    padding-left: 24px !important;
+    cursor: default !important;
+}
+
+[data-testid="stSidebar"] .stButton>button[kind="primary"]:hover {
+    background: linear-gradient(90deg, rgba(0, 110, 255, 0.25), rgba(77, 200, 255, 0.12)) !important;
+    border-color: rgba(0, 150, 255, 0.25) !important;
+    color: #e0f4ff !important;
+    padding-left: 24px !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+/* Force left alignment inside button text wrapper */
+[data-testid="stSidebar"] .stButton>button p,
+[data-testid="stSidebar"] .stButton>button div {
+    text-align: left !important;
+    width: 100% !important;
+    margin: 0 !important;
+    display: block !important;
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #020b18;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0055aa;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0077cc;
+}
+
+/* ─── Tablet & Mobile Responsiveness ──────────────────────── */
+@media screen and (max-width: 1024px) {
+
+    /* Ensure cards and blocks don't overflow the screeen on tiny devices */
+    .glass-card {
+        padding: 16px !important;
+    }
+
+    /* On tablet/mobile, we might want to ensure the sidebar navigation is still possible */
+    [data-testid="collapsedControl"],
+    [data-testid="stSidebarCollapseButton"],
+    button[title="Collapse sidebar"],
+    button[title="Close sidebar"] {
+        display: flex !important;
+        pointer-events: auto !important;
+        visibility: visible !important;
+        z-index: 999999 !important;
+        background-color: transparent !important;
+        color: rgb(224, 244, 255) !important;
+    }
+    
+    /* Force sidebar to overlay "par dessus la page" like mobile */
+    section[data-testid="stSidebar"] {
+        position: fixed !important;
+        height: 100vh !important;
+        z-index: 999998 !important;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.5) !important;
+    }
+}
+
+/* ─── Centered Loading Overlay ────────────────────────────── */
+

@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Environnements virtuels
+.venv/
+venv/
+env/
+.env
+
+# VS Code
+.vscode/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Modèle entraîné (gros fichiers binaires — à régénérer via train_model.py)
+model/classifier.pkl
+model/scaler.pkl
+model/metadata.pkl
+
+# Données d'entraînement (trop volumineuses pour Git)
+Ressources/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
